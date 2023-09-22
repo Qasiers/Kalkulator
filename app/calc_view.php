@@ -1,40 +1,39 @@
-<?php require_once dirname(__FILE__) ."/../config.php";?>
-<!DOCTYPE HTML>
-<html lang="pl">
-<head>
-<meta charset="utf-8" />
-<title>Kalkulator</title>
-<style>
-    * {
-        line-height: 2;
+<?php
+require_once dirname(__FILE__)."/../config.php";
+$sum = $_REQUEST["sum"];
+$proc = $_REQUEST["proc"];
+$time = $_REQUEST["time"];
+if (!empty($sum) && !empty($time) && !empty($proc)) {
+    if (is_numeric($sum) && is_numeric($time) && is_numeric($proc)) {
+        if ($sum <= 200000 && $time <= 120 && $proc >= 1) {
+            $proc /= 100;
+            $ins = ($proc/12)*$time;
+            $whole = $sum+($sum*$proc);
+            $month = $whole/$time;
+            $month = number_format($month,0,","," ");
+            $whole = number_format($whole,0,","," ");
+            $msg = "Kwota pojedynczej raty: $month<br /> Kwota do spłaty: $whole<br />";
+            $err = "'no_err'";
+            $proc *= 100;
+        } else if ($proc < 1 && $proc > 0) {
+            $ins = ($proc/12)*$time;
+            $whole = $sum+($sum*$proc);
+            $month = $whole/$time;
+            $month = number_format($month,0,","," ");
+            $whole = number_format($whole,0,","," ");
+            $msg = "Kwota pojedynczej raty: $month<br /> Kwota do spłaty: $whole<br />";
+            $err = "'no_err'";
+            $proc *= 100;
+        } else {
+            $msg = "Podano nieprawidłową wartość.";
+            $err = "'err'";
+        }
+    } else {
+        $msg = "Dane wprowadź w postaci liczb.";
+        $err = "'err'";
     }
-    input, button, section {
-        line-height: 1 !important;
-    }
-    .no_err {
-        background-color: #66B032;
-        width: max-content;
-        padding: 2%;
-        border-radius: 10px;
-    }
-    .err {
-        background-color: #FE2712;
-        width: max-content;
-        padding: 2%;
-        border-radius: 10px;
-    }
-</style>
-</head>
-<body>
-<form action="<?php print(_APP_URL);?>/app/calc.php" method="post">
-    <label id="names" for="id_sum">Kwota kredytu</label>
-    <input id="id_sum" name="sum" value="<?php isset($sum)?print($sum):''; ?>" /><br />
-    <label id="names" for="id_time">Okres spłaty (w miesiącach)</label>
-    <input id="id_time" name="time" value="<?php isset($time)?print($time):''; ?>" /><br />
-    <button type="submit">Oblicz</button>
-</form>
-    <section class=<?php isset($err)?print($err):"";?>>
-        <?php isset($msg)?print($msg):""?>
-    </section>
-</body>
-</html>
+} else {
+    $msg = "Jedno lub więcej pół jest nieuzupełnione.";
+    $err = "'err'";
+}
+include "calc_view.php";
