@@ -2,7 +2,6 @@
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
-<link rel="stylesheet" href="style.css">
 <meta charset="utf-8" />
 <title>Kalkulator</title>
 <style>
