@@ -7,6 +7,10 @@
 </head>
 <body>
 <div class="upper">
+	<a href="<?php print(_APP_ROOT); ?>/app/inna_chroniona.php">Druga strona</a>
+	<a href="<?php print(_APP_ROOT); ?>/app/security/logout.php">Wyloguj</a>
+</div>
+<div class="upper">
 <form action="<?php print(_APP_ROOT); ?>/app/calc.php" method="post">
 <fieldset>
 	<legend class="calc_legend">Kalkulator</legend>
