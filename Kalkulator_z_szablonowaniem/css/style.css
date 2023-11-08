@@ -1,0 +1,86 @@
+
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2vw;
+}
+body {
+    margin: 0%;
+    background-color: silver;
+}
+header {
+    border-style: solid;
+    border-color: #494846;
+    border-radius: 4px;
+    margin: 0.5%;
+    padding: 1.5% 0% 1.5% 0%;
+    background-color: #363533;
+    text-align: center;
+}
+a {
+    text-decoration: none;
+    color: #E2E2E1;
+}
+.content {
+    border-style: solid;
+    border-color: #f3f3f3;
+    border-radius: 4px;
+    padding: 3.75% 2%;
+    margin: 0% 0.5%;
+    background-color: #fcfcfc;
+}
+.content > p {
+    margin: 0em 0em 1em 1em;
+}
+.err, .result {
+    padding-inline-start: 1em;
+}
+.err {
+    border-style: none;
+    border-radius: 4px;
+    background-color: #FFEB84;
+    padding: 1em;
+}
+.result {
+    border-style: none;
+    border-radius: 4px;
+    background-color: #63BE7B;
+    padding: 1em;
+    margin-inline-start: 1em !important;
+    margin-inline-end: 1em !important;
+}
+legend {
+    margin: 1em 0em 1em 1em;
+    font-weight: bold;
+    font-size: 1.4vw !important;
+    padding: 0%;
+    color: #494846 !important;
+}
+form > label {
+    margin: 1em 0em 0em 1em;
+}
+button, input, select {
+    margin: 0em 0em 1em 1em;
+}
+input, select {
+    border-style: solid;
+    border-color: #363533;
+    background-color: #fcfcfc;
+    border-radius: 4px;
+}
+button {
+    border-style: solid;
+    border-color: #363533;
+    border-radius: 4px;
+    background-color: #494846;
+    color: #E2E2E1;
+}
+footer {
+    border-style: solid;
+    border-color: #363533;
+    border-radius: 4px;
+    margin: 0.5%;
+    background-color: #494846;
+    padding: 1.5% 0.4% 1.5% 0.4%;
+    color: #E2E2E1;
+    text-align: center;
+}
