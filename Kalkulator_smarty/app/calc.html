@@ -1,0 +1,48 @@
+{extends file="../templates/main.html"}
+
+{block name=footer}Autor: Barbara Turniak{/block}
+
+{block name=content}
+<form action="{$app_url}/app/calc.php" method="post">
+	<legend class="calc_legend">Kalkulator</legend>
+	<fieldset>
+		<label for="id_a">Pierwsza liczba: </label><br/>
+		<input id="id_a" type="text" name="a" value="{$form['a']}" /><br/>
+		<label for="id_op">Działanie: </label><br/>
+		<select id="id_op" name="op">
+			{if isset($form['op_name'])}
+			<option value="{$form['op']}">ponownie: {$form['op_name']}</option>
+			<option value="" disabled="true">---</option>
+			{/if}
+			<option value="add">&plus;</option>
+			<option value="sub">&minus;</option>
+			<option value="times">&times;</option>
+			<option value="div">&divide;</option>
+		</select><br/>
+		<label for="id_b">Druga liczba: </label><br/>
+		<input id="id_b" type="text" name="b" value="{$form['b']}" /><br/>
+	</fieldset>
+	<button type="submit">Oblicz</button>
+</form>	
+
+	{if isset($array_msg)}
+	{if count($array_msg) > 0} 
+		<h4>Błędy: </h4>
+		<ol class="err">
+		{foreach  $array_msg as $msg}
+		{strip}
+			<li>{$msg}</li>
+		{/strip}
+		{/foreach}
+		</ol>
+	{/if}
+{/if}
+
+{if isset($result)}
+	<h4>Wynik</h4>
+	<p class="result">
+	{$result}
+	</p>
+{/if}
+
+{/block}
