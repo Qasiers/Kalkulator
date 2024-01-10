@@ -1,0 +1,48 @@
+{extends file="../templates/main.html"}
+
+{block name=footer}Autor: Barbara Turniak{/block}
+
+{block name=content}
+<form action="{$conf->app_url}/app/calc.php" method="post">
+	<legend class="calc_legend">Kalkulator</legend>
+	<fieldset>
+		<label for="id_a">Pierwsza liczba: </label><br/>
+		<input id="id_a" type="text" name="a" value="{$form->a}"><br/>
+		<label for="id_op">Działanie: </label><br/>
+		<select id="id_op" name="op">
+
+		{if isset($res->op_name)}
+		<option value="{$form->op}">ponownie: {$res->op_name}</option>
+		<option value="" disabled="true">---</option>
+		{/if}
+
+			<option value="add">&plus;</option>
+			<option value="sub">&minus;</option>
+			<option value="times">&times;</option>
+			<option value="div">&divide;</option>
+		</select><br/>					
+		<label for="id_b">Druga liczba:</label><br/>
+		<input id="id_b" type="text" name="b" value="{$form->b}">
+	</fieldset>
+	<button type="submit">Oblicz</button>
+</form>
+
+{if $msgs->isErr()}
+	<h4>Błędy: </h4>
+	<ol class="err">
+	{foreach $msgs->getErr() as $err}
+	{strip}
+		<li>{$err}</li>
+	{/strip}
+	{/foreach}
+	</ol>
+{/if}
+
+{if isset($res->result)}
+	<h4>Wynik</h4>
+	<p class="res">
+	{$res->result}
+	</p>
+{/if}
+
+{/block}
